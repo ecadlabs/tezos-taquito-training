@@ -1,8 +1,10 @@
 import { TezosToolkit, OpKind } from '@taquito/taquito';
-import { InMemorySigner } from '@taquito/signer'
+import { InMemorySigner } from '@taquito/signer';
+import { env } from './config';
 
-const Tezos = new TezosToolkit('https://ghostnet.ecadinfra.com');
-const signer = new InMemorySigner('edskRtmEwZxRzwd1obV9pJzAoLoxXFWTSHbgqpDBRHx1Ktzo5yVuJ37e2R4nzjLnNbxFU4UiBU1iHzAy52pK5YBRpaFwLbByca')
+
+const Tezos = new TezosToolkit(env.rpc);
+const signer = new InMemorySigner(env.secretKey)
 
 Tezos.setSignerProvider(signer);
 

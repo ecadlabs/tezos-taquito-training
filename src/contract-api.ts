@@ -1,38 +1,39 @@
 import { TezosToolkit } from '@taquito/taquito';
-import { InMemorySigner } from '@taquito/signer'
+import { InMemorySigner } from '@taquito/signer';
+import { env } from './config';
 
-const Tezos = new TezosToolkit('https://ghostnet.ecadinfra.com');
-const signer = new InMemorySigner('edskRtmEwZxRzwd1obV9pJzAoLoxXFWTSHbgqpDBRHx1Ktzo5yVuJ37e2R4nzjLnNbxFU4UiBU1iHzAy52pK5YBRpaFwLbByca')
+
+const Tezos = new TezosToolkit(env.rpc);
+const signer = new InMemorySigner(env.secretKey);
 
 Tezos.setSignerProvider(signer);
 
-let contractAddress: any;
 
-const originateOperation = async () => {
-  const code = `parameter nat; storage nat; code { CAR ; NIL operation ; PAIR }`;
-  
-  console.log(`Originating a new contract...`);
-  const op = await Tezos.contract.originate({
-    code,
-    storage: 10
+const transactionOperation = async () => {
+  console.log(`Transferring funds...`);
+  const op = await Tezos.contract.transfer({
+    to: 'tz1YvE7Sfo92ueEPEdZceNWd5MWNeMNSt16L',
+    amount: 0.01
   });
 
   console.log(`Awaiting confirmation...`);
   await op.confirmation();
+  console.log(`Operation hash: ${op.hash}`);
 
-  contractAddress = op.contractAddress;
-  console.log(`Originated contract address: ${contractAddress}`);
+  // check transaction result using indexer: 
 }
 
 const callContract = async () => {
-  contractAddress = 'KT1DY97sFj5TZY7s3BhMeydRSV7PS19nzxAG';
+  const contractAddress = 'KT1DY97sFj5TZY7s3BhMeydRSV7PS19nzxAG';
   
   console.log(`Calling contract at address: ${contractAddress}`);
   const contract = await Tezos.contract.at(contractAddress);
   const op = await contract.methods.default(5).send();
   await op.confirmation();
   console.log(`Contract updated at address: ${contractAddress}`);
+  console.log(`Operation hash: ${op.hash}`);
 
   // check contract call result using indexer: https://ghostnet.tzkt.io/KT1DY97sFj5TZY7s3BhMeydRSV7PS19nzxAG/operations/
 }
 
+transactionOperation()

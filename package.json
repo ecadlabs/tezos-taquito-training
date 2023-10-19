@@ -8,7 +8,9 @@
     "start-esm": "node --loader ts-node/esm index.ts",
     "start": "ts-node ./src/index.ts",
     "operation-flow": "ts-node src/taquito-operation-flow.ts",
-    "batch-api": "ts-node src/batch-api.ts"
+    "batch-api": "ts-node src/batch-api.ts",
+    "index": "ts-node src/index.ts",
+    "build": "rimraf ./build && tsc"
   },
   "repository": {
     "type": "git",
@@ -21,12 +23,16 @@
   },
   "homepage": "https://github.com/ecadlabs/tezos-taquito-training#readme",
   "devDependencies": {
+    "@types/node": "^20.8.7",
+    "rimraf": "^5.0.5",
     "ts-node": "^10.9.1",
     "typescript": "^5.2.2"
   },
   "dependencies": {
     "@taquito/local-forging": "^17.3.2",
     "@taquito/signer": "^17.3.2",
-    "@taquito/taquito": "^17.3.2"
+    "@taquito/taquito": "^17.3.2",
+    "dotenv": "^16.3.1",
+    "react-code-blocks": "^0.1.4"
   }
 }

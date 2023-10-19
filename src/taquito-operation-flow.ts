@@ -1,11 +1,12 @@
 import { TezosToolkit } from '@taquito/taquito';
 import { InMemorySigner } from '@taquito/signer';
 import { LocalForger } from '@taquito/local-forging';
+import { env } from './config';
 
 
 const operationFlow = async () => {
-  const Tezos = new TezosToolkit('https://ghostnet.ecadinfra.com');
-  const signer = new InMemorySigner('edskRtmEwZxRzwd1obV9pJzAoLoxXFWTSHbgqpDBRHx1Ktzo5yVuJ37e2R4nzjLnNbxFU4UiBU1iHzAy52pK5YBRpaFwLbByca')
+  const Tezos = new TezosToolkit(env.rpc);
+  const signer = new InMemorySigner(env.secretKey)
 
   Tezos.setSignerProvider(signer);
 
@@ -14,7 +15,7 @@ const operationFlow = async () => {
   console.log(`Estimates for the transfer operation: `);
   console.log(`Fee: ${estimate.suggestedFeeMutez}`);
   console.log(`Gas limit: ${estimate.gasLimit}`);
-  console.log(`Storage limit: ${estimate.storageLimit}`);
+  console.log(`Storage limit: ${estimate.storageLimit} \n`);
 
 
   const prepare = await Tezos.prepare.transaction({ 
@@ -26,7 +27,7 @@ const operationFlow = async () => {
   });
 
   console.log(`Prepared operation: `);
-  console.log(JSON.stringify(prepare, null, 2));
+  console.log(`${JSON.stringify(prepare, null, 2)} \n`);
 
   const forgeableOperation = await Tezos.prepare.toForge(prepare);
   const forger = new LocalForger();
@@ -34,13 +35,13 @@ const operationFlow = async () => {
   console.log(`Forging operation...`)
   const forgedOp = await forger.forge(forgeableOperation);
   
-  console.log(`Forged operation: ${forgedOp}`);
+  console.log(`Forged operation: ${forgedOp} \n`);
 
   console.log(`Signing operation...`);
 
   const signedOp = await Tezos.signer.sign(forgedOp, new Uint8Array([3]));
 
-  console.log(`Signed operation: ${signedOp}`);
+  console.log(`Signed operation: ${JSON.stringify(signedOp)} \n`);
 
   console.log(`Injecting operation...`);
 
