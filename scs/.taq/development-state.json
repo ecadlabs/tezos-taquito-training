@@ -1,0 +1,71 @@
+{
+    "operations": {},
+    "tasks": {
+        "@taqueria/plugin-ligo.compile.1697508435979": {
+            "task": "compile",
+            "plugin": "@taqueria/plugin-ligo",
+            "time": 1697508435979,
+            "output": [
+                {
+                    "source": "Counter.mligo/Counter",
+                    "artifact": "artifacts/Counter.tz\nartifacts/Counter.default_storage.tz\nartifacts/Counter.storage.another_count.tz\nartifacts/Counter.parameter.increment_by_3.tz"
+                }
+            ]
+        },
+        "@taqueria/plugin-ligo.test.1698273043103": {
+            "task": "test",
+            "plugin": "@taqueria/plugin-ligo",
+            "time": 1698273043103,
+            "output": [
+                {
+                    "contract": "Memory.test.mligo",
+                    "testResults": "Some tests failed :("
+                }
+            ]
+        },
+        "@taqueria/plugin-ligo.test.1698273325711": {
+            "task": "test",
+            "plugin": "@taqueria/plugin-ligo",
+            "time": 1698273325711,
+            "output": [
+                {
+                    "contract": "Memory.test.mligo",
+                    "testResults": "Some tests failed :("
+                }
+            ]
+        },
+        "@taqueria/plugin-ligo.test.1698273350388": {
+            "task": "test",
+            "plugin": "@taqueria/plugin-ligo",
+            "time": 1698273350388,
+            "output": [
+                {
+                    "contract": "Memory.test.mligo",
+                    "testResults": "Some tests failed :("
+                }
+            ]
+        },
+        "@taqueria/plugin-ligo.test.1698273621355": {
+            "task": "test",
+            "plugin": "@taqueria/plugin-ligo",
+            "time": 1698273621355,
+            "output": [
+                {
+                    "contract": "Memory.test.mligo",
+                    "testResults": "Some tests failed :("
+                }
+            ]
+        },
+        "@taqueria/plugin-ligo.test.1698273646164": {
+            "task": "test",
+            "plugin": "@taqueria/plugin-ligo",
+            "time": 1698273646164,
+            "output": [
+                {
+                    "contract": "Memory.test.mligo",
+                    "testResults": "Testing Memory.mligo contract....\nEverything at the top-level was executed.\n- test_bool_to_int_true exited with value ().\n- test_bool_to_int_false exited with value ().\n- test_prefix_match_exact_sequence exited with value ().\n- test_prefix_match_partial_sequence exited with value <fun>.\n- test_prefix_match_incorrect_sequence exited with value <fun>.\n- test_prefix_match_empty_sequence exited with value <fun>.\n- test_prefix_match_longer_sequence exited with value <fun>.\n- test_new_game exited with value ().\n- test_play_first_turn_success exited with value ().\n- test_play_first_turn_failure exited with value ().\n\n🎉 All tests passed 🎉"
+                }
+            ]
+        }
+    }
+}

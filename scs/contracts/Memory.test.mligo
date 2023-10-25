@@ -37,3 +37,16 @@ let test_play_first_turn_success =
     let _ = Test.assert(actual_game_state.level = 1) in
     let _ = Test.assert(actual_game_state.status = Playing) in
     Test.assert(actual_game_state.sequence = sequence)
+
+let test_play_first_turn_failure =
+    let sequence = [2] in
+    let game = init_new_game Map.empty alice sequence in
+    // Alice incorrectly plays her first_turn
+    let first_turn = [1] in
+    let game = play_turn game alice first_turn in
+    let actual_game_state = match Map.find_opt alice game with
+        | Some game_state -> game_state
+        | None -> failwith "Game state not found" in
+    let _ = Test.assert(actual_game_state.level = 0) in
+    let _ = Test.assert(actual_game_state.status = Lost) in
+    Test.assert(actual_game_state.sequence = sequence)

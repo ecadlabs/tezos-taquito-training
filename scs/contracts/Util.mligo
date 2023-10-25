@@ -1,3 +1,12 @@
+// Convert a boolean to an integer
+let bool_to_int b = if b then 1 else 0
+
+let test_bool_to_int_true =
+  Test.assert (bool_to_int true = 1)
+
+let test_bool_to_int_false =
+  Test.assert (bool_to_int false = 0)
+
 // Determines if `guess` is a "prefix match" of `sequence`
 let is_prefix_match (guess: int list) (sequence: int list) : bool =
     let rec prefix_helper (g: int list) (s: int list): bool =

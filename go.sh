@@ -1,33 +1,18 @@
 #!/usr/bin/env zsh
 #
-# Zsh command-line helpers for the Simple Memory Game, which uses a Tezos Smart Contract implemented
-# in CameLIGO, and a UI that uses Taquito to interact with the contract.
+# Zsh command-line helpers for Taquito / Tezos development.
 #
 # * Ensure you are using `zsh` (you can check with `$ echo $SHELL`)
-# * Run `$ source go.sh` to load the commands into your current shell session
+# * Run `$ source go.sh` to load the commands into your current shell/session
 
 source ./util.sh
 
-# TODO Port to `devbox`?
+# TODO Trial `devbox` for this?
 setup_node() {
     [[ $(command -v nvm) ]] || echo 'No `nvm` found: Ensure you run Node v16.16+'
-    # NOTE Node v17 is not supported!
+    # NOTE Node v17 is not supported by Taquito!
     nvm use v16
 }
-
-install_plugins() {
-    taq install @taqueria/plugin-ligo
-}
-
-_compile_contract() { taq compile $1; }
-compile_counter_contract() { _compile_contract Counter.mligo; }
-
-_run_tests() { taq test $1 --plugin @taqueria/plugin-ligo; }
-_run_tests_ligo() { ligo run test $1; }
-
-run_memory_tests_taq() { _run_tests Memory.test.mligo; }
-run_memory_tests_ligo() { _run_tests_ligo Memory.test.ligo; }
-alias rtl=run_tests_ligo
 
 convert_mermaid_diagrams_to_svg () {
     # `npm install -g mermaid.cli`
