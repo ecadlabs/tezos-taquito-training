@@ -37,18 +37,19 @@ convert_mermaid_diagrams_to_svg () {
 	  done
 }
 
-convert_svg_to_jpg() {
-    (( $# == 1 )) || { _err 'usage:' CUR_FUN '<file>'; return 1 }
+_convert_to_xyz() {
     [[ -f $1 ]] || { _err "File not found: $1"; return 2 }
     # `sudo apt get install imagemagick`
     [[ -n $(command -v mogrify) ]] || { _err '`ImageMagick` has not been installed'; return 3 }
-    mogrify -format jpg -resize 1920x1080 -density 300 ${1:r}.jpg
+    mogrify -format $2 -resize 1920x1080 -density 300 ${1:r}.${2}
+}
+
+convert_svg_to_jpg() {
+    (( $# == 1 )) || { _err 'usage:' CUR_FUN '<file>'; return 1 }
+    _convert_to_xyz $1 jpg
 }
 
 convert_svg_to_png() {
     (( $# == 1 )) || { _err 'usage:' CUR_FUN '<file>'; return 1 }
-    [[ -f $1 ]] || { _err "File not found: $1"; return 2 }
-    # `sudo apt get install imagemagick`
-    [[ -n $(command -v mogrify) ]] || { _err '`ImageMagick` has not been installed'; return 3 }
-    mogrify -format png -resize 1920x1080 -density 300 ${1:r}.png
+    _convert_to_xyz $1 png
 }
