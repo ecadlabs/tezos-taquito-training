@@ -1,0 +1,16 @@
+{
+    "name": "sim",
+    "private": true,
+    "version": "0.0.1",
+    "description": "Simple Memory Game using Taquito and Tezos Smart Contract",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@taqueria/plugin-ligo": "^0.42.0"
+    }
+}

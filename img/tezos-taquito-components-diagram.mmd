@@ -1,0 +1,33 @@
+%%{init: {'theme': 'neutral'}}%%
+graph TD;
+  style A fill:#f9dbbd,stroke:#333,stroke-width:2px
+  style B fill:#fc9d9a,stroke:#333,stroke-width:2px
+  style C fill:#fe4365,stroke:#333,stroke-width:2px
+  style D fill:#c8c8a9,stroke:#333,stroke-width:2px
+  style E fill:#83af9b,stroke:#333,stroke-width:2px
+  style F fill:#83af9b,stroke:#333,stroke-width:2px
+  style G fill:#f9dbbd,stroke:#333,stroke-width:2px
+  style H fill:#a8a7a7,stroke:#333,stroke-width:2px
+  style I fill:#c0c085,stroke:#333,stroke-width:2px
+  style J fill:#c0c085,stroke:#333,stroke-width:2px
+  style K fill:#f9e3bd,stroke:#333,stroke-width:2px
+
+  subgraph C[Web Server]
+    D[dApp]
+  end
+
+  subgraph K[Tezos Node]
+    A[Blockchain]
+  end
+
+  K -->|Hosts| B[Smart Contract]
+  E[Browser] -->|Accesses| C
+  F[Mobile Phone] -->|Accesses| C
+  G[Taquito] -.->|Interacts With| K
+  G -.->|Interacts With| B
+  D -->|Uses| G
+  H[User] -->|Operates| E
+  H -->|Operates| F
+  H -->|Uses| D
+  I[Browser Wallet] -->|Interacts With| E
+  J[Mobile App Wallet] -->|Interacts With| F

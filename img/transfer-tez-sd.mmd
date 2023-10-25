@@ -1,0 +1,40 @@
+---
+title: "Transfer Tez Taquito Operation"
+---
+%%{init: {'theme': 'neutral'}}%%
+sequenceDiagram
+    participant Taquito as Taquito SDK
+    participant Alice as Alice Wallet
+    participant Node as Tezos Node
+    participant Bob as Bob Wallet
+    participant BE as BlockExplorer
+
+    Alice->>Taquito: Initialize (Set RPC URL, etc.)
+
+    Taquito->>Node: Establish intent (transfer Tez to Bob)
+    Note right of Taquito: Fetch current storage and counter
+
+    Node-->>Taquito: Fetch operation counter and gas estimate
+
+    Taquito->>Alice: Prepare operation with fees
+    Note right of Alice: Private Key held securely
+    Note over Taquito,Alice: Taquito uses public_key_hash, counter, gas_limit, ...
+
+    Alice->>Taquito: Approve Prepared Operation
+    Taquito->>Taquito: Forge the prepared operation (convert to bytes)
+
+    Taquito->>Alice: Request for Signature
+    Alice->>Taquito: Sign the forged operation with Private Key
+    Note right of Taquito: Signed operation includes: forged bytes + signature
+
+    Taquito->>Node: Inject signed operation into mempool
+    Note right of Node: Awaiting for block inclusion
+
+    Node-->>Taquito: Confirmation (operation hash)
+
+    Taquito->>BE: Query operation by hash
+    BE-->>Taquito: Show operation details
+    Taquito->>Alice: Operation Status
+
+    Node->>Bob: Tez transferred
+    Note right of Bob: Tez received, updates state
