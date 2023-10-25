@@ -45,11 +45,11 @@ _convert_to_xyz() {
 }
 
 convert_svg_to_jpg() {
-    (( $# == 1 )) || { _err 'usage:' CUR_FUN '<file>'; return 1 }
+    (( $# != 1 )) || { _err 'usage:' CUR_FUN '<svg file>'; return 1 }
     _convert_to_xyz $1 jpg
 }
 
 convert_svg_to_png() {
-    (( $# == 1 )) || { _err 'usage:' CUR_FUN '<file>'; return 1 }
+    (( $# != 1 )) || { _err 'usage:' CUR_FUN '<svg file>'; return 1 }
     _convert_to_xyz $1 png
 }
