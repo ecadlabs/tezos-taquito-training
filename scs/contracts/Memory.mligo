@@ -47,7 +47,7 @@ let _calculate_status (attempt: int list) (sequence: int list) : status =
     | ([], _::_) -> Playing // done: this attempt completed without mistakes
     | (_, []) -> Playing // return! no mistakes made
     | (atth::attt, seqh::seqt) ->
-        if atth = seqh then status_helper attt seqt else Lost // heads are the same, recurse; otherwise, Lost
+        if atth <> seqh then Lost else status_helper attt seqt // heads are the same, recurse; otherwise, Lost
   in
   status_helper attempt sequence
 
