@@ -50,3 +50,26 @@ let test_play_first_turn_failure =
     let _ = Test.assert(actual_game_state.level = 0) in
     let _ = Test.assert(actual_game_state.status = Lost) in
     Test.assert(actual_game_state.sequence = sequence)
+
+let test_play_wins =
+    let sequence = [4;2] in
+    let game = init_new_game Map.empty alice sequence in
+    // Alice must play her first_turn correctly to advance to the next level
+    let game = play_turn game alice [4] in
+    // Alice correctly plays her final turn and wins!
+    let last_turn = [4;2] in
+    let game = play_turn game alice last_turn in
+    let actual_game_state = match Map.find_opt alice game with
+        | Some game_state -> game_state
+        | None -> failwith "Game state not found" in
+    let _ = Test.assert(actual_game_state.level = 2) in
+    let _ = Test.assert(actual_game_state.status = Won) in
+    Test.assert(actual_game_state.sequence = sequence)
+
+let test_status_won = Test.assert(Won = _calculate_status [1] [1])
+let test_status_won = Test.assert(Lost = _calculate_status [1] [2])
+let test_status_playing = Test.assert(Playing = _calculate_status [1] [1;2])
+
+let test_status_won_multi = Test.assert(Won = _calculate_status [1;2] [1;2])
+let test_status_playing_multi = Test.assert(Playing = _calculate_status [1;2] [1;2;3])
+let test_status_lost_multi = Test.assert(Lost = _calculate_status [1;2] [1;3])

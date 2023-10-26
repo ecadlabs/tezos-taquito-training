@@ -31,3 +31,26 @@ let test_prefix_match_empty_sequence () =
 
 let test_prefix_match_longer_sequence () =
     Test.assert(is_prefix_match [1; 2; 3; 4; 5] [1; 2; 3; 4])
+
+type int_string_map = (int, string) map
+let int_string_map: int_string_map = Map.literal[(0, "0"); (1, "1"); (2, "2"); (3, "3"); (4, "4"); (5, "5"); (6, "6"); (7, "7"); (8, "8"); (9, "9")]
+
+let _digit_to_string (key: int): string =
+  match Map.find_opt key int_string_map with
+    Some str -> str
+  | None -> (failwith "Not found": string)
+
+let rec _int_to_str ((x, str): int * string) : string =
+    if (x < 10) then
+       _digit_to_string(x) ^ str
+    else
+        _int_to_str((
+        x / 10,
+        _digit_to_string(int(x mod 10)) ^ str))
+
+// Yup: CameLIGO has no built-in int_to_str
+let int_to_str (x: int) : string =
+    _int_to_str(x, "")
+
+// Use it like this:
+// let _ = Test.println("Got level: " ^ (int_to_str game_state.level)) in
