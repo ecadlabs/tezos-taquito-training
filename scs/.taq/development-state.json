@@ -12,17 +12,6 @@
                 }
             ]
         },
-        "@taqueria/plugin-ligo.test.1698351422027": {
-            "task": "test",
-            "plugin": "@taqueria/plugin-ligo",
-            "time": 1698351422027,
-            "output": [
-                {
-                    "contract": "Memory.test.mligo",
-                    "testResults": "Some tests failed :("
-                }
-            ]
-        },
         "@taqueria/plugin-ligo.test.1698351435508": {
             "task": "test",
             "plugin": "@taqueria/plugin-ligo",
@@ -60,6 +49,17 @@
             "task": "test",
             "plugin": "@taqueria/plugin-ligo",
             "time": 1698351479691,
+            "output": [
+                {
+                    "contract": "Memory.test.mligo",
+                    "testResults": "Testing Memory.mligo contract....\nEverything at the top-level was executed.\n- test_bool_to_int_true exited with value ().\n- test_bool_to_int_false exited with value ().\n- test_prefix_match_exact_sequence exited with value ().\n- test_prefix_match_partial_sequence exited with value <fun>.\n- test_prefix_match_incorrect_sequence exited with value <fun>.\n- test_prefix_match_empty_sequence exited with value <fun>.\n- test_prefix_match_longer_sequence exited with value <fun>.\n- test_new_game exited with value ().\n- test_play_first_turn_success exited with value ().\n- test_play_first_turn_failure exited with value ().\n- test_play_wins exited with value ().\n- test_status_won exited with value ().\n- test_status_won exited with value ().\n- test_status_playing exited with value ().\n- test_status_won_multi exited with value ().\n- test_status_playing_multi exited with value ().\n- test_status_lost_multi exited with value ().\n\n🎉 All tests passed 🎉"
+                }
+            ]
+        },
+        "@taqueria/plugin-ligo.test.1698352031829": {
+            "task": "test",
+            "plugin": "@taqueria/plugin-ligo",
+            "time": 1698352031829,
             "output": [
                 {
                     "contract": "Memory.test.mligo",
