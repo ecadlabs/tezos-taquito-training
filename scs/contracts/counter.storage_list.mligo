@@ -1,4 +1,4 @@
-#import "Counter.mligo" "Contract"
+#import "counter.mligo" "Contract"
 
 // Define initial storage values as a list of LIGO variable definitions, the first of which will be
 // considered the default value to be used for origination later on

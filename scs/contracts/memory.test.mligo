@@ -1,6 +1,6 @@
-#include "./Memory.mligo"
+#include "./memory.mligo"
 
-let _print_header = Test.println("Testing Memory.mligo contract....")
+let _print_header = Test.println("Testing memory.mligo contract....")
 
 // A test player for our game. A player is an address, typically a wallet the dApp connects to.
 let alice = Test.nth_bootstrap_account 1

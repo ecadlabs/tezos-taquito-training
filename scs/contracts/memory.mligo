@@ -14,7 +14,7 @@
   Copyright © 2023 ECAD Labs Inc. See the LICENSE file at top-level for details.
 *)
 
-#include "./Util.mligo"
+#include "./util.mligo"
 
 type action = NewGame of int list | PlayTurn of int list
 type status = Playing | Won | Lost
