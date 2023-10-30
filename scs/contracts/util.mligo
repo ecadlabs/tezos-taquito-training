@@ -13,7 +13,7 @@ let is_prefix_match (guess: int list) (sequence: int list) : bool =
         match (g, s) with
         | ([], _) -> true
         | (_, []) -> false
-        | (gh::gt, sh::st) -> if gh = sh then prefix_helper gt st else false
+        | (gh::gt, sh::st) -> if gh <> sh then false else prefix_helper gt st
     in
     prefix_helper guess sequence
 
@@ -51,6 +51,5 @@ let rec _int_to_str ((x, str): int * string) : string =
 // Yup: CameLIGO has no built-in int_to_str
 let int_to_str (x: int) : string =
     _int_to_str(x, "")
-
-// Use it like this:
+// Usage:
 // let _ = Test.println("Got level: " ^ (int_to_str game_state.level)) in
