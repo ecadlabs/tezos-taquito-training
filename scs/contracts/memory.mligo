@@ -39,7 +39,7 @@ let init_new_game (s: storage) (caller: address) (seq: int list) : storage =
     let initial_game_state = { level = 0; sequence = seq; status = Playing } in
     Map.add caller initial_game_state s
 
-// Repurposed is_prefix_match to return directly `status`
+// Given an attempt and sequence, evaluate its Status
 let _calculate_status (attempt: int list) (sequence: int list) : status =
   let rec status_helper (att: int list) (seq: int list): status =
     match (att, seq) with

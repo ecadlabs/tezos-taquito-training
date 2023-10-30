@@ -1,15 +1,21 @@
-module Counter = struct
-  type storage = int
+(*
+  Pedagogical Counter contract from:
+      https://ligolang.org/docs/advanced/first-contract?lang=cameligo#a-counter-contract
 
-  type ret = operation list * storage
+  Source `go.sh` to experiment with CLI facilities for this contract.
+*)
 
-  (* Three entrypoints *)
-  [@entry]
-  let increment (delta : int) (store : storage) : ret = [], store + delta
+type storage = int
+type result = operation list * storage
 
-  [@entry]
-  let decrement (delta : int) (store : storage) : ret = [], store - delta
+[@entry]
+let increment (n : int) (store : storage) : result =
+    [], store + n
 
-  [@entry]
-  let reset (() : unit) (_ : storage) : ret = [], 0
-end
+[@entry]
+let decrement (n : int) (store : storage) : result =
+    [], store - n
+
+[@view]
+let v1 (n : int) (store : storage) : int =
+    store + n
