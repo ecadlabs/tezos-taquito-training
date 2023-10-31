@@ -1,0 +1,36 @@
+---
+title: "High-Level Taquito: Originate Contract"
+---
+%%{init: {'theme': 'neutral'}}%%
+sequenceDiagram
+  participant dApp
+  participant Taquito
+  participant Blockchain
+  participant Contract
+
+  dApp->>Taquito: Initialize Taquito (RPC URL, Signer)
+  Note over dApp,Taquito: Setup the toolkit and signer
+
+  dApp->>Taquito: Load compiled contract and initial storage
+  Note over dApp,Taquito: Reads compiled Michelson code and prepares initial storage
+
+  dApp->>Taquito: Originate ("deploy") Contract
+  Taquito->>Taquito: Validate contract and storage
+  Note over Taquito: Checks Michelson code and storage for consistency
+
+  Taquito->>Blockchain: Send origination transaction
+  Note over Taquito,Blockchain: Signs and broadcasts transaction to deploy contract
+
+  Blockchain->>Contract: Originate
+  Note over Blockchain: Contract is originated/created on-chain
+
+  Blockchain->>Taquito: Send transaction hash
+  Note over Blockchain,Taquito: Receives hash to track transaction status
+
+  Taquito->>Blockchain: Poll for transaction receipt
+  Note over Taquito,Blockchain: Awaits confirmations
+
+  Blockchain-->>Taquito: Transaction receipt
+  Note over Blockchain,Taquito: Confirms successful deployment
+
+  Taquito-->>dApp: return Address

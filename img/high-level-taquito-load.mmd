@@ -1,0 +1,30 @@
+---
+title: "High-Level Taquito: Load Contract"
+---
+%%{init: {'theme': 'neutral'}}%%
+sequenceDiagram
+  participant dApp
+  participant Taquito
+  participant Blockchain
+  participant Contract
+
+  dApp->>Taquito: Initialize Taquito (RPC URL, Signer)
+  Note over dApp,Taquito: Ensure toolkit and (optional) signer are set up
+
+  dApp->>Taquito: Load Contract (by Address)
+  Note over dApp, Taquito: No signing required! Read-only operation
+
+  Taquito->>Blockchain: Fetch Contract
+  Note over Taquito,Blockchain: Request contract details by address
+
+  Blockchain->>Contract: Retrieve Contract
+  Note over Blockchain,Counter: Finds contract on-chain based on given address
+
+  Contract-->>Blockchain: Return Contract
+  Note over Contract,Blockchain: Contract code, storage, metadata
+
+  Blockchain-->>Taquito: Return Contract
+  Note over Blockchain,Taquito: Generate local representation of contract
+
+  Taquito->>dApp: [Counter contract loaded]
+  Note over Taquito,dApp: Contract API to call methods, read storage, ...

@@ -1,0 +1,34 @@
+---
+title: "High-Level Taquito: Call Contract"
+---
+%%{init: {'theme': 'neutral'}}%%
+sequenceDiagram
+  participant dApp
+  participant Taquito
+  participant Contract
+  participant Blockchain
+
+  dApp->>Taquito: Initialize Taquito (RPC URL, Signer)
+  Note over dApp,Taquito: Ensure toolkit, signer set up
+
+  dApp->>Taquito: Load Contract API (by Address)
+
+  dApp->>Taquito: Call Increment(42)
+  Note over dApp,Taquito: Request to call a specific endpoint with the given argument(s)
+
+  Taquito->>Taquito: Prepare operation
+  Note over Taquito: Assembles transaction payload, includes method and arguments
+
+  Taquito->>Taquito: Sign operation
+  Note over Taquito: Use the configured signer
+
+  Taquito->>Blockchain: Send signed operation / transaction
+  Note over Taquito,Blockchain: Broadcasts the signed transaction to execute the method
+
+  Blockchain->>Contract: Validate and apply state change
+  Note over Blockchain,Contract: Validates and apply state change (to storage)
+
+  Blockchain-->>Taquito: Transaction receipt, updated state
+  Note over Blockchain,Taquito: Provides a receipt and updated state data as required
+
+  Taquito-->>dApp: [return results or errors]
