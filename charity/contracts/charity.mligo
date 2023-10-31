@@ -2,20 +2,15 @@
   This Tezos CameLIGO Smart Contract implements functionality that would allow a charity or
   non-profit foundation to raise / receive funds in the form of Tez.
 
-  An organization sets up their receiving address by creating a new instance of the Charity
-  contract, which takes as parameters the name of the organization and their wallet address and
-  returns the address of the newly-created contract.
+  An organization sets up their receiving address by calling new_charity, which takes as parameters
+  the name of the organization and a wallet address into which they can receive funds.
 
-  Glossary of Terms:
-
-    Charity: The organization that wishes to receive funds
-    Paused: Whether or not the contract is currently active (true or false)
-
-  TODO:
-    * Paused functionality
-    * List charities functionality
+  Extension: A Charity may "Pause" their wallet_address, during which donations cannot be taken.
 
   IDEAS:
+    * Implement `Pause` functionality
+    * List charities functionality (as a View)
+    * Sum donations across all charities ("total donations")
     * Refactor new_charity to take Option(address) and use Sender if None
 
   Copyright © 2023 ECAD Labs Inc. See the LICENSE file at top-level for details.

@@ -7,7 +7,7 @@
 
 let _print_header = Test.println("Testing charity.mligo Smart Contract....")
 
-// Common test decls gasp
+// Common/global test decls
 let wonderful_org = "TheWonderfulCharity.org"
 let wonderful_wallet = Test.nth_bootstrap_account 1
 let environment_org = "BlueEnvironment.org"
