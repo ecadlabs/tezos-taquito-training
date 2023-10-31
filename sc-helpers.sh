@@ -2,6 +2,9 @@
 #
 # Helpers for Smart Contract development.
 
+# Utility address
+export addr1="tz1VSUr8wwNhLAzempoch5d6hLRiTh8Cjcjb"
+
 install_plugins() {
     taq install @taqueria/plugin-ligo
 }
