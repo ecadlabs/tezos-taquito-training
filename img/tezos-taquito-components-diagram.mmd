@@ -1,4 +1,7 @@
-%%{init: {'theme': 'neutral'}}%%
+---
+title: "Taquito Environment"
+---
+%%{init: {theme: neutral}}%%
 graph TD;
   style A fill:#f9dbbd,stroke:#333,stroke-width:2px
   style B fill:#fc9d9a,stroke:#333,stroke-width:2px
@@ -9,7 +12,6 @@ graph TD;
   style G fill:#f9dbbd,stroke:#333,stroke-width:2px
   style H fill:#a8a7a7,stroke:#333,stroke-width:2px
   style I fill:#c0c085,stroke:#333,stroke-width:2px
-  style J fill:#c0c085,stroke:#333,stroke-width:2px
   style K fill:#f9e3bd,stroke:#333,stroke-width:2px
 
   subgraph C[Web Server]
@@ -29,5 +31,6 @@ graph TD;
   H[User] -->|Operates| E
   H -->|Operates| F
   H -->|Uses| D
-  I[Browser Wallet] -->|Interacts With| E
-  J[Mobile App Wallet] -->|Interacts With| F
+  I[Wallet] -->|Interacts With| E
+  I -->|Interacts With| F
+
