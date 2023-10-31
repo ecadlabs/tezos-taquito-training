@@ -26,4 +26,4 @@ This repository contains all workshop materials.
 [Let's be careful to not add too many]
 
 * [Taquito (of course!)](https://tezostaquito.io/)
-* ...
+* "Testing Ligo Code" at https://is.gd/GQ8PlJ
