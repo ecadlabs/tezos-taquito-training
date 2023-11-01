@@ -26,3 +26,4 @@ build
 
 .env.dev
 .env.prod
+key.json

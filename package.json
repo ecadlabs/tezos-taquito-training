@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start-esm": "node --loader ts-node/esm index.ts",
     "start": "ts-node ./src/index.ts",
+    "keygen": "ts-node ./src/key-gen.ts",
     "operation-flow": "ts-node src/taquito-operation-flow.ts",
     "batch-api": "ts-node src/batch-api.ts",
     "index": "ts-node src/index.ts",
