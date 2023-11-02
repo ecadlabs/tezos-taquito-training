@@ -1,0 +1,4 @@
+{ parameter (pair string address) ;
+  storage (map string address) ;
+  code { UNPAIR ; UNPAIR ; SWAP ; SOME ; SWAP ; UPDATE ; NIL operation ; PAIR } }
+
