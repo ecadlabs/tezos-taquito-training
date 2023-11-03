@@ -1,7 +1,7 @@
 import { InMemorySigner } from '@taquito/signer';
 import { b58cencode, Prefix, prefix } from '@taquito/utils';
 import { writeFile } from 'node:fs/promises';
-const nodeCrypto = require('crypto');
+import nodeCrypto from 'crypto';
 
 (async () => {
   let secretKey = genSecretKey();
@@ -12,7 +12,8 @@ const nodeCrypto = require('crypto');
     publicKey: await signer.publicKey(),
     secretKey: secretKey,
   };
-  await writeFile('.env', `SECRET_KEY=${key.secretKey}\n#CONTRACT_ADDRESS=\nRPC=https://ghostnet.ecadinfra.com\n`);
+  await writeFile('key.json', JSON.stringify(key));
+  await writeFile('.env.dev', `PKH=${key.publicKeyHash}\nSECRET_KEY=${key.secretKey}\nCONTRACT_ADDRESS=KT1DY97sFj5TZY7s3BhMeydRSV7PS19nzxAG\nRPC=https://ghostnet.ecadinfra.com\n`);
 })();
 
 // tz3 prefix publicKeyHash(address)
