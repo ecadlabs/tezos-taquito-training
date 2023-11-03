@@ -1,11 +1,4 @@
-import { TezosToolkit } from '@taquito/taquito';
-import { InMemorySigner } from '@taquito/signer';
-import { env } from './config';
-
-const Tezos = new TezosToolkit(env.rpc);
-const signer = new InMemorySigner(env.secretKey);
-
-Tezos.setSignerProvider(signer);
+import { Tezos } from "./Tezos";
 
 const originate = async () => {
   // contract that puts "Hello" in the storage
