@@ -12,7 +12,7 @@ const nodeCrypto = require('crypto');
     publicKey: await signer.publicKey(),
     secretKey: secretKey,
   };
-  await writeFile('key.json', JSON.stringify(key));
+  await writeFile('.env', `SECRET_KEY=${key.secretKey}\n#CONTRACT_ADDRESS=\nRPC=https://ghostnet.ecadinfra.com\n`);
 })();
 
 // tz3 prefix publicKeyHash(address)
