@@ -1,0 +1,19 @@
+{
+    "words": [
+        "b58cencode",
+        "ECAD",
+        "forgeable",
+        "ligo",
+        "mligo",
+        "Mutez",
+        "println",
+        "struct",
+        "taquito",
+        "Tezos",
+        "UNPAIR"
+    ],
+    "ignoreRegExpList": [
+        "tz[1-3].{33}",
+        "KT1.{33}"
+    ]
+}
