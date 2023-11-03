@@ -1,4 +1,4 @@
-import { Tezos } from "./Tezos";
+import { Tezos } from "./01-tezos";
 
 const callContract = async () => {
   const contractAddress = 'KT1DY97sFj5TZY7s3BhMeydRSV7PS19nzxAG';

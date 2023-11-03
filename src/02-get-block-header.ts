@@ -1,4 +1,4 @@
-import { Tezos } from "./Tezos";
+import { Tezos } from "./01-tezos";
 
 const initialize = async () => {
   console.log(`Call the RPC to get the current block head`);

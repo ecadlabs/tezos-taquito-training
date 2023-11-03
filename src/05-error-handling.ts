@@ -1,4 +1,4 @@
-import { Tezos } from "./Tezos";
+import { Tezos } from "./01-tezos";
 
 const errorHandling = async () => {
   console.log(`Transferring funds...`);

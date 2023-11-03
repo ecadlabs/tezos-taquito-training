@@ -1,5 +1,5 @@
 import { LocalForger } from '@taquito/local-forging';
-import { Tezos } from './Tezos';
+import { Tezos } from './01-tezos';
 
 
 const operationFlow = async () => {

@@ -4,10 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "keygen": "ts-node src/key-gen.ts",
-    "index": "ts-node src/index.ts",
-    "build": "rimraf ./build && tsc"
+    "key-gen": "ts-node src/00-key-gen.ts",
+    "get-block-header": "ts-node src/02-get-block-header.ts",
+    "originate": "ts-node src/03-originate.ts",
+    "transaction": "ts-node src/04-transaction.ts",
+    "error-handling": "ts-node src/05-error-handling.ts",
+    "batch-api": "ts-node src/06-batch-api.ts",
+    "smart-contract-interaction": "ts-node src/07-smart-contract-interaction.ts",
+    "taquito-operation-flow": "ts-node src/08-taquito-operation-flow.ts"
   },
   "repository": {
     "type": "git",

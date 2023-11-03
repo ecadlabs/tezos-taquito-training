@@ -1,5 +1,5 @@
 import { OpKind } from '@taquito/taquito';
-import { Tezos } from './Tezos';
+import { Tezos } from './01-tezos';
 
 const batchOperation = async () => {
 
