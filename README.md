@@ -15,13 +15,12 @@ It includes simple and relevant examples to get started with leraning Taquito an
 ### Installation
 ```
 npm install
-
-npm run build
 ```
 
-### Running the examples
+### Running an examples
+- more scripts in `package.json` file
 ```
-node build/FILENAME.js
+npm run get-block-header
 ```
 
 ## Generating your secret key
@@ -31,12 +30,8 @@ To generate your secret key, we have provided a script `key-gen.ts`
 Execute the script using this command:
 ```
 npm run keygen
-
-OR
-
-// after running npm run build
-node build/key-gen.js
 ```
+
 This will generate a file called `key.json` that contains the following:
 - public key hash
 - secret key
